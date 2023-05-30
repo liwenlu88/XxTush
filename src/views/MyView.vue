@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    这是首页
+  <div class="my">
+    个人中心
 
     <Tabard></Tabard>
   </div>
@@ -9,8 +9,8 @@
 <script>
 import Tabard from "@/assets/components/common/Tabard.vue";
 export default {
-  name: "HomeView",
-  components: {
+  name: `MyView`,
+  comments: {
     Tabard,
   },
 };
