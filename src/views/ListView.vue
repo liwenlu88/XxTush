@@ -1,17 +1,16 @@
 <template>
-  <div class="list">
-    列表页
-
-    <Tabard></Tabard>
+  <div>
+    <div class="list"></div>
+    <HeaderComp />
   </div>
 </template>
 
 <script>
-import Tabard from "@/assets/components/common/Tabard.vue";
+import HeaderComp from "@/assets/components/home/HeaderComp.vue";
 export default {
   name: "ListView",
   components: {
-    Tabard,
+    HeaderComp,
   },
 };
 </script>

@@ -1,17 +1,16 @@
 <template>
-  <div class="home">
-    这是首页
-
-    <Tabard></Tabard>
+  <div>
+    <div class="home"></div>
+    <HeaderComp />
   </div>
 </template>
 
 <script>
-import Tabard from "@/assets/components/common/Tabard.vue";
+import HeaderComp from "@/assets/components/home/HeaderComp.vue";
 export default {
   name: "HomeView",
   components: {
-    Tabard,
+    HeaderComp,
   },
 };
 </script>
