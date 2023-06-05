@@ -1,43 +1,106 @@
 <template>
   <div class="header">
-    <ul>
-      <li>
-        <img src="@/assets/logo.png" alt="logo" class="logo" />
-      </li>
-      <li class="search">
-        <input type="search" name="search" id="search" />
-        <i class="bi bi-search"></i>
-      </li>
-      <li>
-        <i class="bi bi-person-exclamation"></i>
-      </li>
-    </ul>
+    <div class="search">
+      <ul>
+        <li>
+          <img src="@/assets/logo.png" alt="logo" class="logo" />
+        </li>
+        <li class="search">
+          <input
+            type="search"
+            name="search"
+            id="search"
+            placeholder="在这搜索哦～"
+          />
+          <i class="bi bi-search"></i>
+        </li>
+        <li>
+          <i class="bi bi-headset"></i>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 导航 -->
+    <ly-tabs v-model="value">
+      <ly-tab-item
+        v-for="(item, index) in topBarList"
+        :key="index"
+        :name="index == value ? value : index"
+        :title="item.title"
+      />
+    </ly-tabs>
+
+    <!-- 轮播图 -->
+    <HeaderSwiper />
   </div>
 </template>
+
+<script>
+import { LyTabs, LyTabItem } from "ly-tab";
+import HeaderSwiper from "@/assets/components/home/HeaderSwiper.vue";
+export default {
+  components: {
+    LyTabs,
+    LyTabItem,
+    HeaderSwiper,
+  },
+  data() {
+    return {
+      value: "0",
+      topBarList: [
+        {
+          title: "推荐",
+        },
+        {
+          title: "专业图书",
+        },
+        {
+          title: "博学",
+        },
+        {
+          title: "童书",
+        },
+        {
+          title: "工具书",
+        },
+        {
+          title: "手册",
+        },
+        {
+          title: "小说",
+        },
+        {
+          title: "学习用书",
+        },
+      ],
+    };
+  },
+};
+</script>
 
 <style scoped>
 /* 美化header */
 .header {
-  height: 2.5rem;
+  height: 5rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
-  background-color: #1a5c03af;
 }
 
 /* 美化ul */
-.header ul {
+.search ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 0 0.5rem;
   height: 2.5rem;
+  background-color: #cfe52caf;
 }
 
 /* 美化li */
-.header ul li {
+.search ul li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,33 +108,35 @@
 }
 
 /* 美化logo */
-.header ul li .logo {
-  height: 1.8rem;
+.search ul li .logo {
+  height: 2.2rem;
 }
 
 /* 美化input */
-.header ul li input {
+.search ul li input {
   width: 16rem;
   height: 1.8rem;
-  border-radius: 0.5rem;
+  border-radius: 0.9rem;
   border: 1px solid #ccc;
   padding-left: 2.2rem;
+  padding-right: 1rem;
   outline: none;
   font-size: 1.1rem;
 }
 
-.search {
+.search .search {
   position: relative;
 }
 
 /* 美化客服图标 */
-.header ul li i {
+.search ul li i {
   font-size: 1.5rem;
+  color: rgb(222, 72, 72);
 }
 
 /* 美化搜索图标 */
-.header ul li .bi-search {
-  font-size: 1.5rem;
+.search ul li .bi-search {
+  font-size: 1.2rem;
   color: #ccc;
   /* 将搜索图标定位到input框内 */
   position: absolute;

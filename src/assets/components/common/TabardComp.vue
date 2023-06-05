@@ -6,7 +6,13 @@
         :key="index"
         @click="switchTab(item.path)"
       >
-        <i :class="$route.path === item.path ? item.selected : item.active"></i>
+        <i
+          :class="
+            $route.path === item.path
+              ? item.selected + ' active'
+              : item.active + ''
+          "
+        ></i>
         <span :class="$route.path === item.path ? 'active' : ''">
           {{ item.name }}
         </span>
@@ -84,6 +90,7 @@ li {
 }
 
 .active {
+  color: red;
   font-weight: bold;
 }
 </style>

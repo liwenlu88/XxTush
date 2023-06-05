@@ -1,4 +1,4 @@
-# vue-tea
+# XxTush
 
 ## Project setup
 ```

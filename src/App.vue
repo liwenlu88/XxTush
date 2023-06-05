@@ -7,6 +7,7 @@
 
 <script>
 import TabardComp from "@/assets/components/common/TabardComp.vue";
+
 export default {
   name: "App",
   components: {
