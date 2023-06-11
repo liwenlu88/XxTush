@@ -1,9 +1,36 @@
 <template>
-  <van-swipe :autoplay="3000">
-    <van-swipe-item v-for="(image, index) in images" :key="index">
-      <img v-lazy="image" />
-    </van-swipe-item>
-  </van-swipe>
+  <div class="carousel">
+    <van-swipe
+      class="my-swipe"
+      :autoplay="3000"
+      @change="onChange"
+      style="overflow: hidden; height: 12rem; position: relative"
+    >
+      <van-swipe-item
+        v-for="(item, index) in swiperList"
+        :key="index"
+        style="float: left"
+      >
+        <img v-lazy="item.image" style="width: 100%" />
+      </van-swipe-item>
+
+      <template #indicator>
+        <div
+          class="custom-indicator"
+          style="
+            position: absolute;
+            right: 0.313rem;
+            bottom: 0.313rem;
+            padding: 0.125 0.313rem;
+            font-size: 0.75rem;
+            background: rgba(0, 0, 0, 0.1);
+          "
+        >
+          {{ current + 1 }}/{{ swiperList.length }}
+        </div>
+      </template>
+    </van-swipe>
+  </div>
 </template>
 
 <script>
@@ -19,33 +46,29 @@ Vue.use(SwipeItem);
 export default {
   data() {
     return {
-      images: [
-        "https://img01.yzcdn.cn/vant/apple-1.jpg",
-        "https://pic.netbian.com/uploads/allimg/230603/002539-16857231398d51.jpg",
-        "https://pic.netbian.com/uploads/allimg/230522/200438-1684757078e034.jpg",
+      current: 0,
+      swiperList: [
+        {
+          id: 1,
+          image: "./image/swiper/1.jpg",
+        },
+        {
+          id: 2,
+          image: "./image/swiper/2.jpg",
+        },
       ],
     };
   },
+  methods: {
+    onChange(index) {
+      this.current = index;
+    },
+  },
 };
-const Base64 = require("js-base64").Base64;
-console.log(
-  Base64.encode(
-    "https://pic.netbian.com/uploads/allimg/230604/003655-16858102157402.jpg"
-  )
-);
 </script>
 
 <style scoped>
-.my-swipe .van-swipe-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 150px;
-  text-align: center;
-  background-color: #39a9ed;
-}
-
-.my-swipe .van-swipe-item img {
-  width: 100%;
-  /* height: 100%; */
+.carousel {
+  margin-top: 5.063rem;
 }
 </style>

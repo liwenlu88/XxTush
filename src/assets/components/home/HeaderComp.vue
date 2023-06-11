@@ -1,6 +1,6 @@
 <template>
-  <div class="header">
-    <div class="search">
+  <div class="headers">
+    <div class="searchbox">
       <ul>
         <li>
           <img src="@/assets/logo.png" alt="logo" class="logo" />
@@ -18,18 +18,17 @@
           <i class="bi bi-headset"></i>
         </li>
       </ul>
+
+      <!-- 导航 -->
+      <ly-tabs v-model="value" id="ly-tabs">
+        <ly-tab-item
+          v-for="(item, index) in topBarList"
+          :key="index"
+          :name="index == value ? value : index"
+          :title="item.title"
+        />
+      </ly-tabs>
     </div>
-
-    <!-- 导航 -->
-    <ly-tabs v-model="value">
-      <ly-tab-item
-        v-for="(item, index) in topBarList"
-        :key="index"
-        :name="index == value ? value : index"
-        :title="item.title"
-      />
-    </ly-tabs>
-
     <!-- 轮播图 -->
     <HeaderSwiper />
   </div>
@@ -80,8 +79,7 @@ export default {
 
 <style scoped>
 /* 美化header */
-.header {
-  height: 5rem;
+.searchbox {
   position: fixed;
   top: 0;
   left: 0;
@@ -90,7 +88,7 @@ export default {
 }
 
 /* 美化ul */
-.search ul {
+.searchbox ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -100,7 +98,7 @@ export default {
 }
 
 /* 美化li */
-.search ul li {
+.searchbox ul li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,12 +106,12 @@ export default {
 }
 
 /* 美化logo */
-.search ul li .logo {
+.searchbox ul li .logo {
   height: 2.2rem;
 }
 
 /* 美化input */
-.search ul li input {
+.searchbox ul li input {
   width: 16rem;
   height: 1.8rem;
   border-radius: 0.9rem;
@@ -124,18 +122,18 @@ export default {
   font-size: 1.1rem;
 }
 
-.search .search {
+.searchbox .search {
   position: relative;
 }
 
 /* 美化客服图标 */
-.search ul li i {
+.searchbox ul li i {
   font-size: 1.5rem;
   color: rgb(222, 72, 72);
 }
 
 /* 美化搜索图标 */
-.search ul li .bi-search {
+.searchbox ul li .bi-search {
   font-size: 1.2rem;
   color: #ccc;
   /* 将搜索图标定位到input框内 */
