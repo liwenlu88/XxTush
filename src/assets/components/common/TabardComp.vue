@@ -70,7 +70,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 3.75rem;
   background-color: #fff;
   border-top: 1px solid #ccc;
   z-index: 999;
