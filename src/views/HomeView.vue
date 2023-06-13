@@ -4,9 +4,6 @@
 		<IconsComp />
 		<ToutiaoComp />
 		<HotComp />
-		<div>
-			ide
-		</div>
 	</div>
 </template>
 
